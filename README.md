@@ -1,4 +1,4 @@
-# Módulo 2: Ejercicio de evaluación intermedia 
+# Módulo 3: Ejercicio de evaluación intermedia 
 
 En este repositorio se presenta el ejercicio de evaluación intermedia de Elena Clemente Rentero para el tercer módulo de programación con React del curso de desarrolladora front-end impartido por Adalab. 
 
