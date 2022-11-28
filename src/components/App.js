@@ -12,7 +12,8 @@ function App() {
     counselor: '',
     speciality: '',
   });
-  const [search, setSearch] = useState('');
+  const [searchName, setSearchName] = useState('');
+  const [searchCounselor, setSearchCounselor] = useState('');
 
 
   // USEEFFECT
@@ -40,15 +41,22 @@ function App() {
     })
   };
 
-  const handleSearch = (ev) => {
-    setSearch(ev.target.value)
+  const handleSearchName = (ev) => {
+    setSearchName(ev.target.value)
   }
 
+  const handleSearchCounselor = (ev) => {
+    setSearchCounselor(ev.target.value)
+  }
 
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR
   const renderAdalabers = () => {
       const adalabersResult = adalabers
-      .filter((eachAdalaber) => eachAdalaber.name.toLowerCase().includes(search.toLowerCase()))
+      .filter(
+        (eachAdalaber) => 
+        eachAdalaber.name.toLowerCase().includes(searchName.toLowerCase()) &&
+        eachAdalaber.counselor === searchCounselor
+      )
       .map((eachAdalaber) => {
         return (
           <tr key={eachAdalaber.id}>
@@ -76,8 +84,15 @@ function App() {
               id='search'
               type='search'
               placeholder="Ej:Maricarmen"
-              onInput={handleSearch}
+              onInput={handleSearchName}
             />
+        <label htmlFor='searchCounselor'>Escoge una tutora:</label>
+        <select name='counselor' id='searchCounselor' onChange={handleSearchCounselor}>
+          <option selected disabled>Escoge una opción</option>
+          <option value='Yanelis'>Yanelis</option>
+          <option value='Dayana'>Dayana</option>
+          <option value='Iván'>Iván</option>
+        </select>
         </form>
       </section>
       <section>
