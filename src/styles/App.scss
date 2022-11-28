@@ -1,13 +1,102 @@
-.header{
-    border-bottom: solid gray 1px;
-    margin-bottom: 20px;
+*{
+    box-sizing: border-box;
 }
 
-.section{
+.body{
+    height: 100%;
+    padding: 20px;
+    background-color: #5BB9B8;;
+    line-height: 1.6;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+.header{
+    margin-bottom: 20px;
+    &__title{
+    text-align: center;
+    font-weight: 300;
+    }     
+}
+
+.main{
+    background-color: #2C3845;
+}
+
+.searcher{
+    text-align: center;
+    &__form{
+        gap: 50px;
+        margin: 20px 0 20px 0;
+        &--label{
+            margin: 10px;
+        }
+    }
+}
+
+.data{
     &__table{
         width: 100%;
-        margin: 20px 0 20px 0;
-        border: solid 1px grey;
+        &--head{
+            background-color: darken(#2C3845,6%);
+            color: #fff;
+            border: 1px solid darken(#2C3845,6%);
+        }
+        &--details{
+            padding: 10px 10px 10px 10px;
+            text-align: left;
+            &:before {
+                display: inline-block;
+                text-align: right;
+                width: 140px;
+            }
+        }
+        &--links{
+            text-decoration: none;
+            list-style: none;
+            color: #fff;
+        }
     }
+}
 
+.add{
+    &__title{
+        text-align: center;
+        font-weight: 300;
+        }  
+    &__form{
+        gap: 50px;
+        margin: 20px 0 20px 0;
+        text-align: center;
+        &--label{
+            margin: 10px;
+        }
+        &--button{
+            margin-left: 10px;
+            background-color: darken(#2C3845,4%);
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px 10px 10px 10px;
+        }
+    }
+}
+
+@media all and (min-width: 768px){
+    .data__table{
+        display: table;
+    }
+    td{
+        border: 1px solid darken(#2C3845,2%);
+        &:before {
+            display: none;
+        }
+    }
+    td,th {
+        padding: 10px;
+    }
+    tr:nth-child(2n+2) {
+        td {
+          background-color: darken(#2C3845,4%);
+        }
+    }
 }

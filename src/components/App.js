@@ -58,18 +58,16 @@ function App() {
           (searchCounselor === '' || eachAdalaber.counselor === searchCounselor)
       )
       .map((eachAdalaber, index) => {
-        return (
-          <tr key={index}>
-            <td>{eachAdalaber.name}</td>
-            <td>{eachAdalaber.counselor}</td>
-            <td>{eachAdalaber.speciality}</td>
-           {/* <td>{eachAdalaber.social_networks.map((eachSocial, i) => {
-              return <li key={i}>
-                <a href={eachSocial.url}>{eachSocial.name}</a>
-              </li>;
-            })}</td> */}
-          </tr>
-        );
+        return <tr key={index}>
+          <td className="data__table--details">{eachAdalaber.name}</td>
+          <td className="data__table--details">{eachAdalaber.counselor}</td>
+          <td className="data__table--details">{eachAdalaber.speciality}</td>
+          {eachAdalaber.social_networks === undefined ? null : <td className="data__table--details links">{eachAdalaber.social_networks.map((eachSocial, i) => {
+            return <li className="data__table--links" key={i}>
+              <a className="data__table--links" href={eachSocial.url}>{eachSocial.name}</a>
+            </li>;
+          })}</td>}
+        </tr>
       });
     return adalabersResult;
   };
@@ -83,74 +81,76 @@ function App() {
         <h1 className="header__title">Adalabers</h1>
       </header>
 
-      <section className="searcher">
-        <form className="searcher__form">
-          <label className="searcher__form--label" htmlFor='searchName'>Nombre:</label>
-          <input
-            className="searcher__form--input"
-            name='search'
-            id='search'
-            type='search'
-            placeholder="Ej:Maricarmen"
-            onInput={handleSearchName}
-          />
-          <label className="searcher__form--label" htmlFor='searchCounselor'>Escoge una tutora:</label>
-          <select className="searcher__form--select" name='counselor' id='searchCounselor' onChange={handleSearchCounselor} value={searchCounselor}>
-            <option value=''>Todos</option>
-            <option value='Yanelis'>Yanelis</option>
-            <option value='Dayana'>Dayana</option>
-            <option value='Iván'>Iván</option>
-          </select>
-        </form>
-      </section>
+        <section className="searcher">
+          <form className="searcher__form">
+            <label className="searcher__form--label" htmlFor='searchName'>Nombre:</label>
+            <input
+              className="searcher__form--input"
+              name='search'
+              id='search'
+              type='search'
+              placeholder="Ej:Maricarmen"
+              onInput={handleSearchName}
+            />
+            <label className="searcher__form--label" htmlFor='searchCounselor'>Escoge una tutora:</label>
+            <select className="searcher__form--select" name='counselor' id='searchCounselor' onChange={handleSearchCounselor} value={searchCounselor}>
+              <option value=''>Todos</option>
+              <option value='Yanelis'>Yanelis</option>
+              <option value='Dayana'>Dayana</option>
+              <option value='Iván'>Iván</option>
+            </select>
+          </form>
+        </section>
 
-      <section className="data">
-        <table className="data__table">
-          <thead className="data__table--head"><tr>
-            <th>Nombre</th>
-            <th>Tutora</th>
-            <th>Especialidad</th>
-            <th>Redes</th>
-          </tr></thead>
-          <tbody className="data__table--body">{renderAdalabers()}</tbody>
-        </table>
-      </section>
+      <main className='main'>
+        <section className="data">
+          <table className="data__table">
+            <thead className="data__table--head"><tr>
+              <th>Nombre</th>
+              <th>Tutora</th>
+              <th>Especialidad</th>
+              <th>Redes</th>
+            </tr></thead>
+            <tbody className="data__table--body">{renderAdalabers()}</tbody>
+          </table>
+        </section>
+      </main>
 
-      <section className='add'>
-        <h2 className='add__title'>Añadir una Adalaber</h2>
-        <form className="add__form" action='' onSubmit={handleSubmit}>
-          <label className="add__form--label" htmlFor='name'>Nombre:</label>
-          <input
-            className="add__form--input"
-            name='name'
-            id='name'
-            type='text'
-            value={newAdalaber.name}
-            onChange={handleInput}
-          />
-          <label className="add__form--label" htmlFor='counselor'>Tutora:</label>
-          <input
-            className="add__form--input"
-            name='counselor'
-            id='counselor'
-            type='text'
-            value={newAdalaber.counselor}
-            onChange={handleInput}
-          />
-          <label className="add__form--label" htmlFor='speciality'>Especialidad:</label>
-          <input
-            className="add__form--input"
-            name='speciality'
-            id='speciality'
-            type='text'
-            value={newAdalaber.speciality}
-            onChange={handleInput}
-          />
-          <button className="add__form--button" type='button' onClick={handleClick}>
-            Añadir una nueva Adalaber
-          </button>
-        </form>
-      </section>
+        <section className='add'>
+          <h2 className='add__title'>Añadir una Adalaber</h2>
+          <form className="add__form" action='' onSubmit={handleSubmit}>
+            <label className="add__form--label" htmlFor='name'>Nombre:</label>
+            <input
+              className="add__form--input"
+              name='name'
+              id='name'
+              type='text'
+              value={newAdalaber.name}
+              onChange={handleInput}
+            />
+            <label className="add__form--label" htmlFor='counselor'>Tutora:</label>
+            <input
+              className="add__form--input"
+              name='counselor'
+              id='counselor'
+              type='text'
+              value={newAdalaber.counselor}
+              onChange={handleInput}
+            />
+            <label className="add__form--label" htmlFor='speciality'>Especialidad:</label>
+            <input
+              className="add__form--input"
+              name='speciality'
+              id='speciality'
+              type='text'
+              value={newAdalaber.speciality}
+              onChange={handleInput}
+            />
+            <button className="add__form--button" type='button' onClick={handleClick}>
+              Añadir una nueva Adalaber
+            </button>
+          </form>
+        </section>
 
     </div>
   );
