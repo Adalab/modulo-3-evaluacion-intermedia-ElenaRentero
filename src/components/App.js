@@ -63,6 +63,11 @@ function App() {
             <td>{eachAdalaber.name}</td>
             <td>{eachAdalaber.counselor}</td>
             <td>{eachAdalaber.speciality}</td>
+            <td>{eachAdalaber.social_networks.map((eachSocial, i) => {
+              return <li key={i}>
+                <a href={eachSocial.url}>{eachSocial.name}</a>
+                </li>;
+            })}</td>
           </tr>
         );
       });
@@ -88,7 +93,7 @@ function App() {
             />
         <label htmlFor='searchCounselor'>Escoge una tutora:</label>
         <select name='counselor' id='searchCounselor' onChange={handleSearchCounselor}>
-          <option selected disabled>Escoge una opción</option>
+          <option selected disabledDefault>Escoge una opción</option>
           <option value='Yanelis'>Yanelis</option>
           <option value='Dayana'>Dayana</option>
           <option value='Iván'>Iván</option>
@@ -101,6 +106,7 @@ function App() {
             <th>Nombre</th>
             <th>Tutora</th>
             <th>Especialidad</th>
+            <th>Redes</th>
           </tr></thead>
           <tbody>{renderAdalabers()}</tbody>
         </table>

@@ -9,6 +9,7 @@ function fetchData() {
             counselor: eachData.counselor,
             promo: eachData.promo,
             speciality: eachData.speciality,
+            social_networks: eachData.social_networks,
             };
             return adalaber;
         });
