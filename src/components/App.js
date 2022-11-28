@@ -55,8 +55,8 @@ function App() {
       .filter(
         (eachAdalaber) => 
         eachAdalaber.name.toLowerCase().includes(searchName.toLowerCase()) &&
-        eachAdalaber.counselor === searchCounselor
-      )
+        eachAdalaber.counselor.includes(searchCounselor)
+        )
       .map((eachAdalaber) => {
         return (
           <tr key={eachAdalaber.id}>
@@ -93,7 +93,7 @@ function App() {
             />
         <label htmlFor='searchCounselor'>Escoge una tutora:</label>
         <select name='counselor' id='searchCounselor' onChange={handleSearchCounselor}>
-          <option selected disabledDefault>Escoge una opción</option>
+          <option selected disabled default>Escoge una opción</option>
           <option value='Yanelis'>Yanelis</option>
           <option value='Dayana'>Dayana</option>
           <option value='Iván'>Iván</option>
