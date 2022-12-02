@@ -7,10 +7,11 @@ function App() {
   // VARIABLES ESTADO
   const [adalabers, setAdalabers] = useState([]);
   const [newAdalaber, setNewAdalaber] = useState({
-    id: '', //crypto.randomUUID(),
+    id: crypto.randomUUID(),
     name: '',
     counselor: '',
     speciality: '',
+    social_networks: []
   });
   const [searchName, setSearchName] = useState('');
   const [searchCounselor, setSearchCounselor] = useState('');
@@ -35,9 +36,11 @@ function App() {
   const handleClick = () => {
     setAdalabers([...adalabers, newAdalaber]);
     setNewAdalaber({
+      id: crypto.randomUUID(),
       name: '',
       counselor: '',
       speciality: '',
+      social_networks: []
     })
   };
 
@@ -57,8 +60,8 @@ function App() {
           (eachAdalaber.name.toLowerCase().includes(searchName.toLowerCase())) &&
           (searchCounselor === '' || eachAdalaber.counselor === searchCounselor)
       )
-      .map((eachAdalaber, index) => {
-        return <tr key={index}>
+      .map((eachAdalaber) => {
+        return <tr key={eachAdalaber.id}>
           <td className="data__table--details">{eachAdalaber.name}</td>
           <td className="data__table--details">{eachAdalaber.counselor}</td>
           <td className="data__table--details">{eachAdalaber.speciality}</td>
@@ -146,7 +149,7 @@ function App() {
               value={newAdalaber.speciality}
               onChange={handleInput}
             />
-            <button className="add__form--button" type='button' onClick={handleClick}>
+            <button className={"add__form--button " + (newAdalaber.name && newAdalaber.counselor && newAdalaber.speciality !== '' ? '' : 'not-active')} type='button' onClick={handleClick}>
               Añadir una nueva Adalaber
             </button>
           </form>
